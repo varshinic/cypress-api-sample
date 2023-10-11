@@ -1,0 +1,15 @@
+{
+  "name": "taf-psc",
+  "version": "1.0.0",
+  "description": "Test Automation Framework for testing Message service endpoints",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
+  },
+  "author": "Hema Varshini Chevuri",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.3.0"
+  }
+}
