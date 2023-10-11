@@ -20,7 +20,19 @@ describe("Message Service", function () {
       this.userData.destination,
       this.userData.message
     ).then((response) =>
-      cy.wrap(response).its("status").should("be.equal", 200)
+      cy
+        .wrap(response)
+        .its("status")
+        .should("be.equal", 200)
+        .wrap(response)
+        .its("body.from.id")
+        .should("be.equal", this.userData.source)
+        .wrap(response)
+        .its("body.to.id")
+        .should("be.equal", this.userData.destination)
+        .wrap(response)
+        .its("body.message")
+        .should("be.equal", this.userData.message)
     );
   });
 
@@ -34,7 +46,19 @@ describe("Message Service", function () {
       MessageService()
         .GetMessageById(response.body.id)
         .then((response) =>
-          cy.wrap(response).its("status").should("be.equal", 200)
+          cy
+            .wrap(response)
+            .its("status")
+            .should("be.equal", 200)
+            .wrap(response)
+            .its("body.from.id")
+            .should("be.equal", this.userData.source)
+            .wrap(response)
+            .its("body.to.id")
+            .should("be.equal", this.userData.destination)
+            .wrap(response)
+            .its("body.message")
+            .should("be.equal", this.userData.message)
         );
     });
   });
@@ -49,7 +73,19 @@ describe("Message Service", function () {
       MessageService()
         .GetMessagesBetweenUsers(response.body.from.id, response.body.to.id)
         .then((response) =>
-          cy.wrap(response).its("status").should("be.equal", 200)
+          cy
+            .wrap(response)
+            .its("status")
+            .should("be.equal", 200)
+            .wrap(response)
+            .its("body[0].from.id")
+            .should("be.equal", this.userData.source)
+            .wrap(response)
+            .its("body[0].to.id")
+            .should("be.equal", this.userData.destination)
+            .wrap(response)
+            .its("body[0].message")
+            .should("be.equal", this.userData.message)
         );
     });
   });
